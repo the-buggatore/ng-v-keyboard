@@ -1,16 +1,23 @@
 <div ng-controller="keyboardCtrl"
-     style="text-align:center"
-     ng-mousedown="blockEvent($event,'mousedown')"
-     ng-mouseup="blockEvent($event,'mouseup')">
+     style="text-align:center">
     <!--<input type="text" ng-model="textFromVirtualKeyb"-->
-           <!--ng-virtual-keyboard="keyBoardConf">-->
+    <!--ng-virtual-keyboard="keyBoardConf">-->
     <!--{{displayEvent}}-->
     <!--<div style="clear: both;height: 80px"></div>-->
     <!--<input  type="text" ng-v-key="keysConf" ng-model="textFromVirtualKeyb">-->
-    <input type="text" ng-model="keyboardInput" name="keyboardInput" ng-init="showKey=false" ng-click="showKey = !showKey">
-    <div style="position: fixed;bottom: 0;z-index:600;width: 100%" ng-show="showKey">
+    <input type="text" ng-model="keyboardInput" name="keyboardInput" ng-init="showKey=false"
+           ng-click="showKey = !showKey">
+    <div style="position: fixed;bottom: 0;z-index:600;width: 100%" ng-show="showKey"
+         ng-mousedown="blockEvent($event,'mousedown')"
+         ng-mouseup="blockEvent($event,'mouseup')">
         <div ng-repeat="rows in keysConf">
-            <button class="keyb" ng-class="{long : ['bksp','tab','shift','enter','clear','caps'].indexOf(char)>-1,'space':['space'].indexOf(char)>-1}"
+            <button class="keyb" ng-class="{
+            long : longKey.indexOf(char.toLowerCase())>=0,
+            selected : (caps.indexOf(char.toLowerCase())>=0 && capsLock),
+            alternateOn : (['alt'].indexOf(char.toLowerCase())>=0 && alt),
+            alternate : (altKeys.indexOf(char.toLowerCase())>=0),
+            space:(['space'].indexOf(char.toLowerCase())>=0) }
+            "
                     ng-repeat="char in rows.split(' ')" ng-click="keypress(char,'keyboardInput')">{{char}}
             </button>
         </div>

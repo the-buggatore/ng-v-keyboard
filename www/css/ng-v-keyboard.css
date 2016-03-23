@@ -1,3 +1,7 @@
+html{
+    font-family: arial, helvetica, sans-serif;
+}
+
 button.bcksp, button.keyb {
     width: 38px;
     font-size: 24px;
@@ -6,11 +10,20 @@ button.bcksp, button.keyb {
     border: none;
     margin: 6px;
 }
+
 button.space {
     min-width: 250px;
+    text-transform: uppercase;
 }
-button.long{
+
+button.long {
     min-width: 100px;
+    text-transform: uppercase;
+}
+
+button.selected,button.alternate,button.alternateOn {
+    background: #004b7a;
+    color: #fff;
 }
 
 button.bcksp:active, button.keyb:active {
