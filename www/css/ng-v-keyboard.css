@@ -21,7 +21,7 @@ button.long {
     text-transform: uppercase;
 }
 
-button.selected,button.alternate,button.alternateOn {
+button.selected,button.alternate,button.alternateOn,button.capsOn {
     background: #004b7a;
     color: #fff;
 }

@@ -15,7 +15,7 @@
             long : longKey.indexOf(char.toLowerCase())>=0,
             selected : (caps.indexOf(char.toLowerCase())>=0 && capsLock),
             alternateOn : (['alt'].indexOf(char.toLowerCase())>=0 && alt),
-            alternate : (altKeys.indexOf(char.toLowerCase())>=0),
+            capsON : (altKeys.indexOf(char.toLowerCase())>=0),
             space:(['space'].indexOf(char.toLowerCase())>=0) }
             "
                     ng-repeat="char in rows.split(' ')" ng-click="keypress(char,'keyboardInput')">{{char}}
@@ -23,6 +23,3 @@
         </div>
     </div>
 </div>
-<style>
-
-</style>
