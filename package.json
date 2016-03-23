@@ -1,0 +1,14 @@
+{
+  "name": "Display-Core-UI",
+  "private": true,
+  "version": "1.0.1",
+  "description": "Core Display User Interface",
+  "repository": "#",
+  "license": "ABB all rights reserved",
+  "devDependencies": {
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "start": "http-server ./www -a localhost -p 8888"
+  }
+}

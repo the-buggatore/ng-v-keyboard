@@ -1,0 +1,12 @@
+{
+	"name":"test-ng-test",
+	"description":"test performance on Sitara embedded system",
+	"version":"0",
+	"private":true,
+	"dependencies":{
+		"angular":"*",
+        "angular-route":"*",
+		"angular-virtual-keyboard":"*",
+        "underscore": null
+    }
+}
