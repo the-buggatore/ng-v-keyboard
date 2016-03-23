@@ -1,10 +1,10 @@
 {
-  "name": "Display-Core-UI",
+  "name": "ng-v-keyboard",
   "private": true,
-  "version": "1.0.1",
-  "description": "Core Display User Interface",
+  "version": "0.0.0",
+  "description": "virtual keyboard, study case",
   "repository": "#",
-  "license": "ABB all rights reserved",
+  "license": "WTFPL",
   "devDependencies": {
     "http-server": "^0.6.1"
   },
