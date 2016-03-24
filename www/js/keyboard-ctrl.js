@@ -6,7 +6,7 @@
 
     $scope.blockEvent = function ($event, type) {
       var d = new Date();
-      console.log(type + ' ' + d.getTime())
+      //console.log(type + ' ' + d.getTime())
       $event.preventDefault();
       $event.stopImmediatePropagation();
     };
@@ -52,30 +52,44 @@
     var conf = $scope.keysConf;
     $scope.keyboardInput = '';
 
-    function altKeyboard() {
-      if ($scope.alt) {
-        $scope.keysConf = $scope.keysConf.map(function (row) {
-          for (char in keylayout) {
-            row = row.replace(' ' + ($scope.capsLock ? char.toUpperCase():char) + ' ', ' ' +  ($scope.capsLock ? keylayout[char].toString().toUpperCase():keylayout[char].toString())  + ' ');
-          }
-          return row;
-        });
-      }else{
-        $scope.keysConf = $scope.keysConf.map(function (row) {
-          for (char in keylayout) {
-            row = row.replace(' ' + ($scope.capsLock ?  keylayout[char].toString().toUpperCase(): keylayout[char] )  + ' ', ' ' + ($scope.capsLock ? char.toUpperCase():char) + ' ');
-          }
-          return row;
-        });
+
+    function prepareRegEx(char) {
+      var specialChars = ['/', '^', '[', '\\', 'w', '&', '.', '-', ']', '+', '$', '/', ']', '?'];
+      var regExChar = char.toString();
+      if (specialChars.indexOf(regExChar) >= 0) {
+        regExChar = '\\' + regExChar;
       }
+      return new RegExp('(^|\\s)' + regExChar + '(\\s|$)', 'ig');
+    }
+
+    function prepareRegExReplacement(char, capsLock) {
+      return '$1' + (capsLock ? char.toString().toUpperCase() : char.toString()) + '$2';
+    }
+
+    function replaceChar(row, char, alternate, capsLock) {
+      if (alternate) {
+        return row.replace(prepareRegEx(char), prepareRegExReplacement(keylayout[char], capsLock));
+      } else {
+        console.log(char)
+        return row.replace(prepareRegEx(keylayout[char]), prepareRegExReplacement(char, capsLock));
+      }
+    }
+
+    function altKeyboard(alternate, capsLock) {
+      $scope.keysConf = $scope.keysConf.map(function (row) {
+        for (char in keylayout) {
+          row = replaceChar(row, char, alternate, capsLock)
+        }
+        return row;
+      });
     }
 
 
     function capsLock() {
       $scope.keysConf = $scope.keysConf.map(function (row) {
-        return $scope.capsLock  ? row.toUpperCase() : row.toLowerCase();
+        return $scope.capsLock ? row.toUpperCase() : row.toLowerCase();
       });
-        conf = $scope.keysConf;
+      conf = $scope.keysConf;
     }
 
     function clearInput(input) {
@@ -108,7 +122,7 @@
         clearInput(input);
       } else if (key.toLowerCase() == 'alt') {
         $scope.alt = !$scope.alt;
-        altKeyboard();
+        altKeyboard($scope.alt, $scope.capsLock);
       } else if (key.toLowerCase() == 'caps') {
         $scope.capsLock = !$scope.capsLock;
         capsLock();
