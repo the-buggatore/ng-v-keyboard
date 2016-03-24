@@ -1,12 +1,11 @@
 (function () {
+  'use strict';
   angular.module('TestVirtualKeyboard.pages', []);
   angular.module('TestVirtualKeyboard.pages').controller('keyboardCtrl', ['$scope', function ($scope) {
     $scope.textFromVirtualKeyb = '';
     $scope.keyBoardConf = {kt: 'US International', relative: false, deadkeysOn: false, sizeAdj: false};
 
     $scope.blockEvent = function ($event, type) {
-      var d = new Date();
-      //console.log(type + ' ' + d.getTime())
       $event.preventDefault();
       $event.stopImmediatePropagation();
     };
@@ -44,7 +43,7 @@
     $scope.longKey = ['bksp', 'tab', 'shift', 'enter', 'clear', 'caps', 'alt'];
     $scope.caps = ['caps'];
     $scope.altKeys = [];
-    for (key in keylayout) {
+    for (var key in keylayout) {
       $scope.altKeys.push(keylayout[key].toString());
     }
 
@@ -67,18 +66,17 @@
     }
 
     function replaceChar(row, char, alternate, capsLock) {
-      if (alternate) {
-        return row.replace(prepareRegEx(char), prepareRegExReplacement(keylayout[char], capsLock));
-      } else {
-        console.log(char)
-        return row.replace(prepareRegEx(keylayout[char]), prepareRegExReplacement(char, capsLock));
-      }
+
+      var charToSearch = alternate ? char : keylayout[char];
+      var newChar = alternate ? keylayout[char] : char;
+
+      return row.replace(prepareRegEx(charToSearch), prepareRegExReplacement(newChar, capsLock));
     }
 
     function altKeyboard(alternate, capsLock) {
       $scope.keysConf = $scope.keysConf.map(function (row) {
-        for (char in keylayout) {
-          row = replaceChar(row, char, alternate, capsLock)
+        for (var char in keylayout) {
+          row = replaceChar(row, char, alternate, capsLock);
         }
         return row;
       });

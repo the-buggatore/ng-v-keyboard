@@ -2,11 +2,18 @@
   "name": "ng-v-keyboard",
   "private": true,
   "version": "0.0.0",
-  "description": "virtual keyboard, study case",
+  "description": "virtual keyboard, case study",
   "repository": "#",
   "license": "WTFPL",
   "devDependencies": {
-    "http-server": "^0.6.1"
+    "http-server": "^0.6.1",
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-csslint": "~0.1.2",
+    "grunt-contrib-jshint": "~0.11",
+    "grunt-jsonlint": "~1.0.2",
+    "grunt-contrib-less": "^0.12.0"
   },
   "scripts": {
     "start": "http-server ./www -a localhost -p 8888"
