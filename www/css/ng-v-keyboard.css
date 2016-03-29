@@ -1,8 +1,21 @@
 html{
     font-family: arial, helvetica, sans-serif;
 }
+input {
+    font-size: 36px;
+    width: 350px;
+    height: 80px;
+    margin: auto;
+    padding: 10px;
+}
+.ng-v-keyboard-overlay{
+    position: fixed;top: 0;z-index:500;height: 100%;width:100%;background: #000;opacity: 0;
+}
+.ng-v-keyboard-basement{
+    position: fixed;bottom: 0;z-index:600;width: 100%;background: #fff
+}
 
-button.bcksp, button.keyb {
+.ng-v-keyboard-basement button.bcksp, button.keyb {
     width: 38px;
     font-size: 24px;
     height: 42px;
@@ -11,83 +24,31 @@ button.bcksp, button.keyb {
     margin: 6px;
 }
 
-button.space {
+.ng-v-keyboard-basement button.space {
     min-width: 250px;
     text-transform: uppercase;
 }
 
-button.long {
+.ng-v-keyboard-basement button.long {
     min-width: 100px;
     text-transform: uppercase;
 }
 
-button.selected,button.alternate,button.alternateOn,button.capsOn {
+.ng-v-keyboard-basement button.selected,button.alternate,button.alternateOn,button.capsOn {
     background: #004b7a;
     color: #fff;
 }
 
-button.bcksp:active, button.keyb:active {
+.ng-v-keyboard-basement button.bcksp:active, button.keyb:active {
     background: #444444;
     color: #fff;
 }
 
-button.keyb {
 
-}
-
-input {
+.ng-v-keyboard-basement input {
     font-size: 36px;
     width: 350px;
     height: 80px;
     margin: auto;
     padding: 10px;
-}
-
-table.keyboardInputMaster {
-    background: #fefefe;
-    box-shadow: none !important;
-    opacity: 1;
-}
-
-table.keyboardInputMaster thead tr th {
-    border-radius: 0 !important;
-    background: #fefefe;
-}
-
-table.keyboardInputMaster thead tr th span:active,
-table.keyboardInputMaster thead tr th span.pressed,
-table.keyboardInputMaster tbody tr td table tbody tr td:active,
-table.keyboardInputMaster tbody tr td table tbody tr td.pressed {
-    border: 4px solid #fefefe !important;
-
-}
-
-table.keyboardInputMaster tbody tr td table tbody tr td:hover,
-table.keyboardInputMaster tbody tr td table tbody tr td.hover {
-    border: 4px solid #fefefe;
-}
-
-table.keyboardInputMaster tbody tr td table tbody tr td {
-    border: 4px solid #fefefe;
-    background-color: #ddd;
-    border-radius: 0 !important;
-    box-shadow: none;
-    font-size: 26px !important;
-
-}
-
-table.keyboardInputMaster thead tr th span,
-table.keyboardInputMaster thead tr th strong,
-table.keyboardInputMaster thead tr th small,
-table.keyboardInputMaster thead tr th big {
-
-    border: 4px solid #fefefe;
-    background-color: #ddd;
-    border-radius: 0 !important;
-}
-
-table.keyboardInputMaster tbody tr td table tbody tr td.deadkey {
-    background: #004B7A;
-    color: #fff;
-
 }
