@@ -1,0 +1,15 @@
+<div class="ng-v-keyboard-overlay" ng-show="showKey">&nbsp;</div>
+<div class="ng-v-keyboard-basement" ng-show="showKey"
+     ng-mousedown="blockEvent($event,'mousedown')"
+     ng-mouseup="blockEvent($event,'mouseup')">
+    <div ng-repeat="rows in keysConf">
+        <button class="keyb" ng-class="{
+            long : longKey.indexOf(char.toLowerCase())>=0,
+            selected : ((caps.indexOf(char.toLowerCase())>=0 && capsLock)||['enter'].indexOf(char.toLowerCase())>=0 ),
+            alternateOn : (['alt'].indexOf(char.toLowerCase())>=0 && alt),
+            capsON : (altKeys.indexOf(char.toLowerCase())>=0),
+            space:(['space'].indexOf(char.toLowerCase())>=0) }"
+                ng-repeat="char in rows.split(' ')" ng-click="keypress(char,input)">{{char}}
+        </button>
+    </div>
+</div>
