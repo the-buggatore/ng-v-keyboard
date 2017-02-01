@@ -3,7 +3,7 @@
      ng-mousedown="blockEvent($event,'mousedown')"
      ng-mouseup="blockEvent($event,'mouseup')">
     <div ng-repeat="rows in keysConf">
-        <button class="keyb" ng-class="{
+        <button ng-class="{
             long : longKey.indexOf(char.toLowerCase())>=0,
             selected : ((caps.indexOf(char.toLowerCase())>=0 && capsLock)||['enter'].indexOf(char.toLowerCase())>=0 ),
             alternateOn : (['alt'].indexOf(char.toLowerCase())>=0 && alt),
