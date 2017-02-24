@@ -15,7 +15,12 @@ input {
     position: fixed;bottom: 0;z-index:600;width: 100%;background: #fff
 }
 
-.ng-v-keyboard-basement button.bcksp, button.keyb {
+.ng-v-keyboard-basement button{
+    min-width: 40px;
+    border: 1px solid aliceblue;
+}
+
+.ng-v-keyboard-basement .bcksp, .keyb {
     width: 38px;
     font-size: 24px;
     height: 42px;
@@ -24,17 +29,17 @@ input {
     margin: 6px;
 }
 
-.ng-v-keyboard-basement button.space {
+.ng-v-keyboard-basement .space {
     min-width: 250px;
     text-transform: uppercase;
 }
 
-.ng-v-keyboard-basement button.long {
+.ng-v-keyboard-basement .long {
     min-width: 100px;
     text-transform: uppercase;
 }
 
-.ng-v-keyboard-basement button.selected,button.alternate,button.alternateOn,button.capsOn {
+.ng-v-keyboard-basement .selected,.alternate,.alternateOn,.capsOn {
     background: #004b7a;
     color: #fff;
 }
