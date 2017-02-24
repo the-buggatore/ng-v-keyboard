@@ -9,7 +9,12 @@ input {
     padding: 10px;
 }
 .ng-v-keyboard-overlay{
-    position: fixed;top: 0;z-index:500;height: 100%;width:100%;background: #000;opacity: 0;
+    position: fixed;top: 0;z-index:500;height: 100%;width:100%;
+    background: #ccc;
+    background: rgba(0,0,0,.4);
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadein .5s;
+    animation: ngdialog-fadein .5s;
 }
 .ng-v-keyboard-basement{
     position: fixed;bottom: 0;z-index:600;width: 100%;background: #fff
